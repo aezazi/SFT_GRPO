@@ -1,0 +1,62 @@
+# Byte-compiled and cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+*.venv
+.env
+
+# Package dependencies
+*.egg-info/
+*.dist-info/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyTorch-related
+*.pt
+*.pth
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Logs and debugging
+logs/
+*.log
+*.out
+*.err
+debug.log
+
+# Temporary and backup files
+*.swp
+*.swo
+*.bak
+*.tmp
+.DS_Store
+
+# AWS-specific files
+*.pem
+*.key
+*.crt
+.ec2-user/
+
+
+# tokenized and sharded files
+dataset_ultrachat_templated_tokenized/
+dataset_ultrachat_templated/
+dataset_ultrachat_train_sft_templated/
+ultrachat_train_formatted/
+ultrachat_eval_formatted/
+ultrachat_train_formatted_tutorial/
+ultrachat_eval_formatted_tutorial/
+model_with_specials/
+model_tutorial/
+model_aae1/
+model_logs/
+tutorial_using_llama_3B/llama3-customer-service-merged/
