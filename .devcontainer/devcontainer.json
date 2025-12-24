@@ -1,0 +1,23 @@
+{
+    "name": "SFT_GRPO Dev Container",
+    "dockerFile": "Dockerfile",
+    "context": "..",
+    "runArgs": [
+        "--gpus", "all"
+    ],
+    "features": {},
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "/opt/venv/bin/python",
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "postCreateCommand": "pip install --no-cache-dir -r requirements.txt",
+    "remoteUser": "root",
+    "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+    ]
+}
