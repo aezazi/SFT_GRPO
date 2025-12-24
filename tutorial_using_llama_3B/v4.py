@@ -11,7 +11,9 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 hf_token = os.getenv("hf_access_token")
+# print(hf_token)
 
+#%%
 # Load BASE model
 model_name = "meta-llama/Llama-3.2-3B"
 
@@ -221,7 +223,7 @@ print("="*50 + "\n")
 
 # Training arguments
 training_args = SFTConfig(
-    output_dir="./llama3.2_base_cs_chat_v2",
+    output_dir="./llama3.2_base_cs_chat_v4",
     num_train_epochs=3,
     per_device_train_batch_size=4,
     per_device_eval_batch_size=4,
@@ -393,8 +395,13 @@ print("Running initial evaluation...")
 initial_metrics = trainer.evaluate()
 print(f"\n📈 Initial Eval Loss: {initial_metrics['eval_loss']:.4f}\n")
 
+#%%
+# ============================= start trainining ==============================================
+
 print("Starting training...\n")
 trainer.train()
+
+#===============================================================================================
 
 # Final evaluation
 print("\n" + "="*50)
@@ -406,7 +413,7 @@ print("="*50 + "\n")
 
 # Save
 trainer.save_model("./llama3.2_base_cs_chat_v2_final")
-tokenizer.save_pretrained("./llama3.2_base_cs_chat_v2_final")
+tokenizer.save_pretrained("./llama3.2_base_cs_chat_v4_final")
 print("✅ Model and tokenizer saved!")
 
 # Test generation
