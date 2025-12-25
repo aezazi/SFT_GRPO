@@ -14,7 +14,8 @@ load_dotenv()
 hf_token = os.getenv("hf_access_token")
 print(hf_token)
 
-print(torch.cuda.is_available())
+if torch.cuda.is_available():
+    print('cuda available')
 
 #%%
 # Load BASE model
