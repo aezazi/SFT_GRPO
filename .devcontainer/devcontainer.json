@@ -27,7 +27,7 @@
         "eamodio.gitlens"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/workspace/env1/bin/python",
+        "python.defaultInterpreterPath": "/opt/venv/bin/python",
         "python.terminal.activateEnvironment": true,
         "jupyter.jupyterServerType": "local",
         "terminal.integrated.defaultProfile.linux": "bash",
