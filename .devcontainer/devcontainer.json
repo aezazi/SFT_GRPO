@@ -1,78 +1,48 @@
 {
   "name": "SFT-GRPO Development",
+
   "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  
-  // Mount the entire alex1 directory to preserve all data
-  // ALSO mount your host SSH keys and git config into container
+
   "mounts": [
     "source=/home/ubuntu/alex1,target=/workspace,type=bind,consistency=cached",
-    "source=${env:HOME}${env:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached,readonly",
-    "source=${env:HOME}${env:USERPROFILE}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached"
+    "source=/home/ubuntu/.ssh,target=/root/.ssh,type=bind,consistency=cached,readonly",
+    "source=/home/ubuntu/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached"
   ],
-  
-  // Set working directory to your project
+
   "workspaceFolder": "/workspace/SFT_GRPO",
-  
-  // Enable GPU access - CRITICAL for your training workloads
+
   "runArgs": [
     "--gpus=all",
-    "--shm-size=16g",
-    "--name=sft-grpo-devcontainer"
+    "--shm-size=16g"
   ],
-  
-  // VSCode settings for the container
+
   "customizations": {
     "vscode": {
-      // Recommended extensions for ML development
-      // These will be AUTOMATICALLY INSTALLED in the container
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
-        "ms-toolsai.jupyter-keymap",
-        "ms-toolsai.jupyter-renderers",
-        "ms-toolsai.vscode-jupyter-cell-tags",
-        "ms-toolsai.vscode-jupyter-slideshow",
-        "github.copilot",
         "eamodio.gitlens"
       ],
-      
-      // Python settings
       "settings": {
-        "python.defaultInterpreterPath": "/usr/bin/python3.12",
+        "python.defaultInterpreterPath": "/opt/venv/bin/python",
         "python.terminal.activateEnvironment": true,
-        "jupyter.jupyterServerType": "local",
-        "files.watcherExclude": {
-          "**/.git/objects/**": true,
-          "**/.git/subtree-cache/**": true,
-          "**/node_modules/*/**": true,
-          "**/__pycache__/**": true,
-          "**/.venv/**": true
-        }
+        "jupyter.jupyterServerType": "local"
       }
     }
   },
-  
-  // Commands to run after container is created (optional - uncomment if needed)
-  // "postCreateCommand": "pip install -r requirements.txt",
-  
-  // Keep container running
+
   "forwardPorts": [8888, 6006],
-  
-  // Comment this out if you want to use root
+
   "remoteUser": "root",
-  
-  // Features to install (alternative to manual apt-get in Dockerfile)
+
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": true,
-      "username": "vscode",
-      "userUid": "1000",
-      "userGid": "1000"
+      "installZsh": true
     }
   }
 }

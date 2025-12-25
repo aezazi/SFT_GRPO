@@ -7,11 +7,14 @@ import torch
 import os
 from dotenv import load_dotenv
 
+
 #%%
 # Load environment variables
 load_dotenv()
 hf_token = os.getenv("hf_access_token")
-# print(hf_token)
+print(hf_token)
+
+print(torch.cuda.is_available())
 
 #%%
 # Load BASE model
